@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/passwordTxt" />
     
     <Button
-        android:id="@+id/SignInBtn"
+        android:id="@+id/signInBtn"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignInBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signInBtn"
         android:layout_marginTop="16dp"/>
 
     <com.google.android.material.divider.MaterialDivider

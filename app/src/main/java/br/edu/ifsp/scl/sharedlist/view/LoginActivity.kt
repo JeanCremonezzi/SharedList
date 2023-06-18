@@ -36,6 +36,10 @@ class LoginActivity : BaseActivity() {
                     openMainActivity()
                 }
             }
+
+            resetPasswordBtn.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
+            }
         }
 
         arl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
