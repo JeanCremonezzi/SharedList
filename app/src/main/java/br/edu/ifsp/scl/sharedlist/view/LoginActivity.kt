@@ -40,6 +40,21 @@ class LoginActivity : BaseActivity() {
             resetPasswordBtn.setOnClickListener {
                 startActivity(Intent(this@LoginActivity, ResetPasswordActivity::class.java))
             }
+
+            signInBtn.setOnClickListener {
+                val email = emailEt.text.toString()
+                val password = passwordEt.text.toString()
+
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(email, password)
+                    .addOnSuccessListener {
+                        Toast.makeText(this@LoginActivity, "User authenticated!", Toast.LENGTH_LONG).show()
+                        openMainActivity()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this@LoginActivity, "Failed to authenticate user!", Toast.LENGTH_LONG).show()
+                    }
+            }
         }
 
         arl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
