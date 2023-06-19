@@ -83,7 +83,7 @@ class TaskAdapter (
         holder.descriptionTxt.text = task.description
         holder.estimatedFinishDateTxt.text = "Due date: ${task.estimatedFinishDate}"
         holder.createdByTxt.text = "Created by ${task.createBy}"
-        holder.createdAtTxt.text = "Created by ${task.createAt}"
+        holder.createdAtTxt.text = "Created at ${task.createAt}"
         holder.finishedByTxt.text = "Finished By ${task.finishedBy}"
         holder.finishedAtTxt.text = "Finished At ${task.finishedAt}"
 
