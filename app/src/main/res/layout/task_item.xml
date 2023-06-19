@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/descriptionTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/estimatedFinishDateTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estimated Finish Date" />
+
+    <TextView
+        android:id="@+id/createdByTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Created By" />
+
+    <TextView
+        android:id="@+id/createdAtTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Created At" />
+
+    <TextView
+        android:id="@+id/finishedByTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finished By" />
+
+    <TextView
+        android:id="@+id/finishedAtTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finished At" />
+
+</LinearLayout>

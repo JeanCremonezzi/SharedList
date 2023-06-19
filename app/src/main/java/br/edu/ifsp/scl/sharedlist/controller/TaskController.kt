@@ -20,7 +20,7 @@ class TaskController(private val mainActivity: MainActivity) {
         Thread {
             val list = dao.getTasks()
             mainActivity.runOnUiThread {
-                //mainActivity.updateTaskList(list)
+                mainActivity.updateTaskList(list)
             }
         }.start()
     }
