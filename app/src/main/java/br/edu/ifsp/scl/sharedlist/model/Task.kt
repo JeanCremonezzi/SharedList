@@ -11,10 +11,10 @@ import kotlinx.parcelize.Parcelize
 class Task (
     @PrimaryKey val id: String = "",
     @NonNull val title: String = "",
-    @NonNull val description: String = "",
+    @NonNull var description: String = "",
     @NonNull val createAt: String = "",
     @NonNull val createBy: String = "",
-    @NonNull val estimatedFinishDate: String = "",
+    @NonNull var estimatedFinishDate: String = "",
     var finishedAt: String = "",
     var finishedBy: String = "",
 ): Parcelable

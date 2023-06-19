@@ -66,9 +66,19 @@ class MainActivity : BaseActivity(), OnTaskClickListenner {
                 }
 
                 task?.let {_task ->
-                    taskController.insertTask(_task)
-                    Toast.makeText(this, "Task created!", Toast.LENGTH_LONG).show()
-                    updateViewsHandler.sendMessageDelayed(Message(), 3000)
+                    val position = taskList.indexOfFirst { it.id == _task.id }
+
+                    if (position != -1) {
+                        taskList[position] = _task
+                        taskController.editTask(_task)
+                        taskAdapter.notifyDataSetChanged()
+                        Toast.makeText(this, "Task updated!", Toast.LENGTH_LONG).show()
+                        
+                    } else {
+                        taskController.insertTask(_task)
+                        Toast.makeText(this, "Task created!", Toast.LENGTH_LONG).show()
+                        updateViewsHandler.sendMessageDelayed(Message(), 3000)
+                    }
                 }
             }
         }
@@ -102,9 +112,9 @@ class MainActivity : BaseActivity(), OnTaskClickListenner {
 
     override fun onEditMenuItemClick(position: Int) {
         val task = taskList[position]
-        val taskIntent = Intent(this@MainActivity, TaskActivity::class.java)
+        val taskIntent = Intent(this@MainActivity, UpdateTaskActivity::class.java)
         taskIntent.putExtra(EXTRA_TASK, task)
-        //arl.launch(taskIntent)
+        arl.launch(taskIntent)
     }
 
     override fun onRemoveMenuItemClick(position: Int) {
