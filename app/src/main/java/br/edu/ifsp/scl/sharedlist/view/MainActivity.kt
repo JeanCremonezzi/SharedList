@@ -34,6 +34,11 @@ class MainActivity : BaseActivity() {
                 true
             }
 
+            R.id.addTask -> {
+                startActivity(Intent(this, TaskActivity::class.java))
+                true
+            }
+
             else -> false
         }
     }
