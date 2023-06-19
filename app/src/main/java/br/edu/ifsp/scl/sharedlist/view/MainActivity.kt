@@ -1,10 +1,13 @@
 package br.edu.ifsp.scl.sharedlist.view
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.ifsp.scl.sharedlist.R
 import br.edu.ifsp.scl.sharedlist.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -14,9 +17,18 @@ class MainActivity : BaseActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private lateinit var arl: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        arl = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()) { result ->
+            if ( result.resultCode == RESULT_OK) {
+
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,7 +47,7 @@ class MainActivity : BaseActivity() {
             }
 
             R.id.addTask -> {
-                startActivity(Intent(this, TaskActivity::class.java))
+                arl.launch(Intent(this, TaskActivity::class.java))
                 true
             }
 
