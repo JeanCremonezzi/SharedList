@@ -10,7 +10,7 @@ interface TaskDao {
     fun createTask(task: Task)
 
     @Query("SELECT * FROM Task WHERE id = :id")
-    fun getTask(id: Int): Task?
+    fun getTask(id: String): Task?
 
     @Query("SELECT * FROM Task")
     fun getTasks(): MutableList<Task>

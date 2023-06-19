@@ -9,12 +9,12 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 class Task (
-    @PrimaryKey(autoGenerate = true) val id: Int? = -1,
-    @NonNull var title: String = "",
-    @NonNull var description: String = "",
-    @NonNull var createAt: String = "",
-    @NonNull var createBy: String = "",
-    @NonNull var estimatedFinishDate: String = "",
+    @PrimaryKey val id: String = "",
+    @NonNull val title: String = "",
+    @NonNull val description: String = "",
+    @NonNull val createAt: String = "",
+    @NonNull val createBy: String = "",
+    @NonNull val estimatedFinishDate: String = "",
     var finishedAt: String = "",
     var finishedBy: String = "",
 ): Parcelable

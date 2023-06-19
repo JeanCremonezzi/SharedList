@@ -15,7 +15,7 @@ class TaskDaoFb: TaskDao {
                 val task: Task? = snapshot.getValue<Task>()
 
                 task?.let { _task ->
-                    if (!taskList.any { _task.title == it.title }) {
+                    if (!taskList.any { _task.id == it.id }) {
                         taskList.add(_task)
                     }
                 }
@@ -25,7 +25,7 @@ class TaskDaoFb: TaskDao {
                 val task: Task? = snapshot.getValue<Task>()
 
                 task?.let { _task ->
-                    taskList[taskList.indexOfFirst { _task.title == it.title }] = _task
+                    taskList[taskList.indexOfFirst { _task.id == it.id }] = _task
                 }
             }
 
@@ -38,11 +38,11 @@ class TaskDaoFb: TaskDao {
             }
 
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
+                // NA
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // NA
             }
 
         })
@@ -67,7 +67,7 @@ class TaskDaoFb: TaskDao {
         createOrUpdateTask(task)
     }
 
-    override fun getTask(id: Int): Task {
+    override fun getTask(id: String): Task {
         return taskList[taskList.indexOfFirst { id == it.id }]
     }
 
@@ -81,11 +81,11 @@ class TaskDaoFb: TaskDao {
     }
 
     override fun deleteTask(task: Task): Int {
-        db.child(task.title).removeValue()
+        db.child(task.id).removeValue()
         return 1
     }
 
     private fun createOrUpdateTask(task: Task) {
-        db.child(task.title).setValue(task)
+        db.child(task.id).setValue(task)
     }
 }

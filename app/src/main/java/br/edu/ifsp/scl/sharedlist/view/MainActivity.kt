@@ -9,7 +9,9 @@ import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import br.edu.ifsp.scl.sharedlist.R
+import br.edu.ifsp.scl.sharedlist.controller.TaskController
 import br.edu.ifsp.scl.sharedlist.databinding.ActivityMainBinding
+import br.edu.ifsp.scl.sharedlist.model.Task
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : BaseActivity() {
@@ -19,6 +21,10 @@ class MainActivity : BaseActivity() {
 
     private lateinit var arl: ActivityResultLauncher<Intent>
 
+    private val taskController: TaskController by lazy {
+        TaskController(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -26,7 +32,15 @@ class MainActivity : BaseActivity() {
         arl = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) { result ->
             if ( result.resultCode == RESULT_OK) {
+                val task = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    result.data?.getParcelableExtra(EXTRA_TASK, Task::class.java)
+                } else {
+                    result.data?.getParcelableExtra(EXTRA_TASK)
+                }
 
+                task?.let {_task ->
+                    taskController.insertTask(_task)
+                }
             }
         }
     }

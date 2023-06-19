@@ -7,6 +7,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 sealed class BaseActivity: AppCompatActivity() {
+    protected val EXTRA_TASK = "Task"
+
     protected val googleSignInOptions: GoogleSignInOptions by lazy {
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
