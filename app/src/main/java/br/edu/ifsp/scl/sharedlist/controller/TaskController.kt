@@ -36,4 +36,6 @@ class TaskController(private val mainActivity: MainActivity) {
             dao.deleteTask(task)
         }.start()
     }
+
+    fun countByTitle(title: String) = dao.countByTitle(title)
 }

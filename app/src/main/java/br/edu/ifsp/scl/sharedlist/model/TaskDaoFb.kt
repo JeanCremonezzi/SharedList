@@ -85,6 +85,10 @@ class TaskDaoFb: TaskDao {
         return 1
     }
 
+    override fun countByTitle(title: String): Int {
+        return taskList.count { it.title == title }
+    }
+
     private fun createOrUpdateTask(task: Task) {
         db.child(task.id).setValue(task)
     }

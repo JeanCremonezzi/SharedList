@@ -73,11 +73,15 @@ class MainActivity : BaseActivity(), OnTaskClickListenner {
                         taskController.editTask(_task)
                         taskAdapter.notifyDataSetChanged()
                         Toast.makeText(this, "Task updated!", Toast.LENGTH_LONG).show()
-                        
+
                     } else {
-                        taskController.insertTask(_task)
-                        Toast.makeText(this, "Task created!", Toast.LENGTH_LONG).show()
-                        updateViewsHandler.sendMessageDelayed(Message(), 3000)
+                        if (taskController.countByTitle(_task.title) > 0) {
+                            Toast.makeText(this, "Task title already inserted!", Toast.LENGTH_LONG).show()
+                        } else {
+                            taskController.insertTask(_task)
+                            Toast.makeText(this, "Task created!", Toast.LENGTH_LONG).show()
+                            updateViewsHandler.sendMessageDelayed(Message(), 3000)
+                        }
                     }
                 }
             }
